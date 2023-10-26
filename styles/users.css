@@ -1,0 +1,51 @@
+header {
+    display: flex;
+    flex-direction: row;
+}
+
+#list-group {
+    margin: 25px;
+    max-width: 830px;
+}
+
+#list-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#add-btn {
+    color: white;
+    text-decoration: none; 
+    background-color: #0d40cd9c;
+    border: 1px solid #2d9175;
+    padding: 5px 10px; 
+    display: inline-block;
+}
+
+thead {
+    background-color: rgb(39, 39, 46);
+}
+
+td {
+    border: 1px solid white;
+    padding: 7px;
+}
+
+button {
+    color: white;
+    border: none;
+}
+
+#add-btn:hover,
+button:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.edit {
+    background-color: rgb(35, 119, 39);
+}
+
+.delete {
+    background-color: rgb(163, 51, 51);
+}

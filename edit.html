@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form">
-        <h1>Add User</h1>
+        <h1>Edit User</h1>
         <div class="form-group">
             <label for="first_name">First Name</label>
             <input type="text" name="first_name" id="first_name" required><br>
@@ -31,11 +31,11 @@
         </div>
         <div class="form-group">
             <label for="age">Age</label>
-            <input type="number" name="age" min="18" max="90" required><br>
+            <input id="age" type="number" name="age" min="18" max="90" required><br>
         </div>
         <div class="form-group">
             <label for="start_with">Date of registration</label>
-            <input type="date" name="start_with" required>
+            <input id="date" type="date" name="start_with" required>
         </div>
         <div class="form-group">
             <label for="language">Languages you know:</label>
@@ -47,15 +47,11 @@
         </div>
         <div class="form-group">
             <label for="comments">Comments:</label>
-            <textarea name="comments" rows="4"></textarea><br/>
+            <textarea id="comments" name="comments" rows="4"></textarea><br/>
         </div>
-        <div class="form-group btn-check">
-            <label for="agree_terms"></label>
-            <input type="checkbox" name="agree_terms" required>Agree with our therms and conditions<br>
-        </div>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Save changes">
     </form>
-
-    <script src="scripts/create.js"></script>
+    
+    <script src="scripts/edit.js"></script>
 </body>
 </html>
