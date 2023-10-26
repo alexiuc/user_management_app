@@ -1,5 +1,4 @@
-const URL = 'https://oboshxaroihamznlgplt.supabase.co/rest/v1/users';
-const apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ib3NoeGFyb2loYW16bmxncGx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTcxOTAwODMsImV4cCI6MjAxMjc2NjA4M30.5hMpZrVCr7NHydQghHhBRgoW6IykUYCbUAMf3Gu52lA';
+import { validateForm, URL, API_KEY } from "./validation.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get('id');
@@ -9,7 +8,7 @@ let initialData = {};
 axios.get(`${URL}?id=eq.${userId}`, {
     headers: {
         'Content-Type': 'application/json',
-        'apikey': apikey
+        'apikey': API_KEY
     }
 })
 .then(response => {
@@ -35,26 +34,30 @@ form.addEventListener('submit', function(event) {
     
     const formData = new FormData(this);
     const updatedData = {};
-    
+      
     formData.forEach((value, key) => {
         if (value !== initialData[key]) { 
             updatedData[key] = value;
         }
     });
 
-    if (Object.keys(updatedData).length > 0) { 
-        axios.patch(`${URL}?id=eq.${userId}`, updatedData, {
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': apikey
-            }
-        })
-        .then(response => {
-            console.log(`User with ID ${userId} updated successfully`);
-            window.location.href = 'users.html';
-        })
-        .catch(error => {
-            console.error('Network error:', error);
-        });
+    const isValidData = validateForm(updatedData, true);
+
+    if (isValidData) {
+       if (Object.keys(updatedData).length > 0) { 
+            axios.patch(`${URL}?id=eq.${userId}`, updatedData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': API_KEY
+                }
+            })
+            .then(response => {
+                console.log(`User with ID ${userId} updated successfully`);
+                window.location.href = 'users.html';
+            })
+            .catch(error => {
+                console.error('Network error:', error);
+            });
+        } 
     }
 });

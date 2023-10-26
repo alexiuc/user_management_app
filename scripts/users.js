@@ -1,10 +1,9 @@
-const URL = 'https://oboshxaroihamznlgplt.supabase.co/rest/v1/users';
-const apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ib3NoeGFyb2loYW16bmxncGx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTcxOTAwODMsImV4cCI6MjAxMjc2NjA4M30.5hMpZrVCr7NHydQghHhBRgoW6IykUYCbUAMf3Gu52lA';
+import { URL, API_KEY } from "./validation.js";
 
 axios.get(URL, {
     headers: {
         'Content-Type': 'application/json',
-        'apikey': apikey
+        'apikey': API_KEY
     }
 })
 .then(response => {
@@ -43,7 +42,7 @@ const deleteUser = (userId) => {
     axios.delete(`${URL}?id=eq.${userId}`, {
         headers: {
             'Content-Type': 'application/json',
-            'apikey': apikey
+            'apikey': API_KEY
         }
     })
     .then(response => {
